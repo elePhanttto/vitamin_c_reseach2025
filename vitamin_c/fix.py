@@ -1,6 +1,6 @@
 import json
 import os
-
+# スペックが低い環境でのトレーニングを安定させるための修正スクリプト
 # --- 1. params.json の設定を安全なものに変える ---
 params_file = 'params_files/params.json'
 print(f"Updating {params_file}...")
