@@ -32,8 +32,8 @@ except (ModuleNotFoundError, ImportError):
 else:
     from .skyplotting import plot_sky
 
-from .models import CVAE_model
-from .models.neural_networks import batch_manager, vae_utils, VI_decoder_r2, VI_encoder_q, VI_encoder_r1 
+from .models import VICI_inverse_model
+from .models.neural_networks import batch_manager, vae_utils, VICI_decoder, VICI_VAE_encoder, VICI_encoder
 
 from . import run_vitamin
 

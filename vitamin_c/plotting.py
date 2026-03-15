@@ -23,7 +23,7 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, FixedLocator
                                AutoMinorLocator)
 import matplotlib.ticker as ticker
 from lal import GreenwichMeanSiderealTime
-from vitamin_c_new import gen_samples, load_samples, convert_hour_angle_to_ra
+from vitamin_c import new
 
 def prune_samples(chain_file_loc,params):
     """ Function to remove bad likelihood emcee chains 
@@ -599,9 +599,9 @@ class make_plots:
         plt.semilogx(xvec,np.array(plotdata)[:,0],label=r'$\mathrm{Recon}(L)$',color='blue',alpha=0.5)
         plt.semilogx(xvec,np.array(plotdata)[:,1],label=r'$\mathrm{KL}$',color='orange',alpha=0.5)
         plt.semilogx(xvec,np.array(plotdata)[:,2],label=r'$\mathrm{Total}(H)$',color='green',alpha=0.5)
-        plt.semilogx(xvec,np.array(plotdata)[:,3],color='blue',linestyle='dotted')
-        plt.semilogx(xvec,np.array(plotdata)[:,4],color='orange',linestyle='dotted')
-        plt.semilogx(xvec,np.array(plotdata)[:,5],color='green',linestyle='dotted')
+        #plt.semilogx(xvec,np.array(plotdata)[:,3],color='blue',linestyle='dotted')
+        #plt.semilogx(xvec,np.array(plotdata)[:,4],color='orange',linestyle='dotted')
+        #plt.semilogx(xvec,np.array(plotdata)[:,5],color='green',linestyle='dotted')
         plt.xlim([3e3,np.max(xvec)])
         plt.ylim([-25,15])
         plt.xlabel(r'$\mathrm{Iteration}$')

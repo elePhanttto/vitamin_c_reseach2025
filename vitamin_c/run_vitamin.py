@@ -45,12 +45,12 @@ from skopt.utils import use_named_args
 try:
     from .gen_benchmark_pe import run, gen_real_noise
     from . import plotting
-    from . import vitamin_c_new as vitamin_c
+    from . import new as vitamin_c
     from .plotting import prune_samples
 except (ModuleNotFoundError, ImportError):
     from gen_benchmark_pe import run, gen_real_noise
     import plotting
-    import vitamin_c_new as vitamin_c
+    import new as vitamin_c
     from plotting import prune_samples
 
 # Check for optional basemap installation
@@ -99,9 +99,9 @@ args = parser.parse_args()
 global params; global bounds; global fixed_vals
 
 # Define default location of the parameters files
-params = os.path.join(os.getcwd(), 'params_files', 'params.json')
-bounds = os.path.join(os.getcwd(), 'params_files', 'bounds.json')
-fixed_vals = os.path.join(os.getcwd(), 'params_files', 'fixed_vals.json')
+params = os.path.join(os.path.dirname(__file__), 'params_files', 'params.json')
+bounds = os.path.join(os.path.dirname(__file__), 'params_files', 'bounds.json')
+fixed_vals = os.path.join(os.path.dirname(__file__), 'params_files', 'fixed_vals.json')
 
 # Load parameters files
 if args.params_file != None:
@@ -1457,6 +1457,8 @@ def gen_samples(params=params,bounds=bounds,fixed_vals=fixed_vals,model_loc='mod
     y_data_test_copy = np.zeros((y_data_test.shape[0],params['ndata'],len(params['det'])))
     if params['n_filters_r1'] != None:
         for i in range(y_data_test.shape[0]):
+            print(f"DEBUG: i={i}, detectors={params['det']}, ndata={params['ndata']}")
+            if i > 0: break
             for j in range(len(params['det'])):
                 idx_range = np.linspace(int(j*params['ndata']),int((j+1)*params['ndata'])-1,num=params['ndata'],dtype=int)       
                 y_data_test_copy[i,:,j] = y_data_test[i,idx_range]
@@ -1501,7 +1503,7 @@ def gen_samples(params=params,bounds=bounds,fixed_vals=fixed_vals,model_loc='mod
                     levels=(0.50,0.90), density=True,
                     plot_density=False, plot_datapoints=True,
                     max_n_ticks=3)
-            figure = corner.corner(samples[i,:,:],**defaults_kwargs,labels=parnames)
+            figure = corner.corner(samples[i,:,:],**defaults_kwargs,labels=parnames,color='tab:blue')
             plt.savefig('./vitamin_corner_timeseries-%d.png' % i)
             plt.close()
             print('... Saved corner plot to -> ./vitamin_corner_timeseries-%d.png' % i)
