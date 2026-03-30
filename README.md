@@ -1,3 +1,5 @@
+[元になった発表](https://doi.org/10.5281/zenodo.18925133)
+
 # VItamin(改造バージョン)
 
 これは，[VItamin_c](https://github.com/hagabbar/vitamin_c)に，[VItamin](https://github.com/hagabbar/VItamin)のモデルファイル(一部改造)を入れて解析できるようにしたものです．発表のデモンストレーション用に作成しました．
