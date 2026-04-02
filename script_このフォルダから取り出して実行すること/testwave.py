@@ -1,3 +1,4 @@
+#シミュレーションで作ったデータのパラメータ推定を行います
 import tensorflow as tf
 tf.compat.v1.enable_eager_execution()
 import matplotlib.pyplot as plt

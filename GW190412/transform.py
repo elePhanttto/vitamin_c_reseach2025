@@ -34,7 +34,7 @@ for det in ['H1', 'L1', 'V1']:
 
     # 2. ここでNaNチェック！
     if np.isnan(data.value).any():
-        print(f" {det} の生データにNaNが含まれています！補間します。")
+        print(f" {det} の生データにNaNが含まれています!補間します。")
         # 欠損値を線形補間で埋める（緊急処置）
         data = data.interpolate(times=data.times)
 
